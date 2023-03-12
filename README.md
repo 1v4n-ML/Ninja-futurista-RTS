@@ -1,2 +1,2 @@
-# Ninja-futurista-RTS
- our first game
+# Ninja Futurista Collab Game
+ 
