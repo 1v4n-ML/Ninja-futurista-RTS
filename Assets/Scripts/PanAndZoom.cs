@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class PanAndZoom : MonoBehaviour
 {
-    //private CinemachineInputProvider inputProvider;
     private CinemachineVirtualCamera virtualCamera;
-    private Quaternion defaultCamRotation;
-    private GameObject player;
+    
+    
     [SerializeField]
     private bool isFocused = true;
 
@@ -20,35 +19,14 @@ public class PanAndZoom : MonoBehaviour
     private float zoomOutMax = 100f;
 
     private void Awake() {
-        //inputProvider = GetComponent<CinemachineInputProvider>();
         virtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
-        defaultCamRotation = virtualCamera.VirtualCameraGameObject.transform.rotation;
-        player = GameObject.FindWithTag("Player");
     }
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
-        /* float x = inputProvider.GetAxisValue(0);
-        float y = inputProvider.GetAxisValue(1);
-        float z = inputProvider.GetAxisValue(2); */
         float x = Input.mousePosition.x;
         float y = Input.mousePosition.y;
-        //float z = Input.mousePosition.z;
         PanScreen(x,y);
-        if (Input.GetKey(KeyCode.F1))
-        {
-            CameraFocus(player);
-            isFocused = false;
-        }
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            isFocused = true;
-            CameraFocus(null);
-        }
+       
         if (Input.mouseScrollDelta.y != 0 || isFocused)
         {
             ZoomScreen(Input.mouseScrollDelta.y);
@@ -83,14 +61,5 @@ public class PanAndZoom : MonoBehaviour
         }
         return direction;
     }
-    public void CameraFocus(GameObject go){
-        if (!go)
-        {
-            virtualCamera.m_LookAt = null;
-            virtualCamera.m_Follow = transform;
-            virtualCamera.transform.rotation = defaultCamRotation;
-        }
-        virtualCamera.m_LookAt = go.transform;
-        virtualCamera.m_Follow = go.transform;
-    }
+   
 }
