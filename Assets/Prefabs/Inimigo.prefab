@@ -146,4 +146,4 @@ MonoBehaviour:
   enemyAgent: {fileID: 5495831274794485185}
   player: {fileID: 0}
   visionRadius: 20
-  chaseSpeed: 20
+  chaseSpeed: 10

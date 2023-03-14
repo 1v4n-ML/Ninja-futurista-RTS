@@ -25,7 +25,6 @@ public class EnemyBeahvior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         float _dist = Vector3.Distance(transform.position,player.transform.position);
