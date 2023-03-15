@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39230998a0d515d46be3d0ec35e8b9ad, type: 3}
+  m_Name: Patroller2
+  m_EditorClassIdentifier: 
+  enemyName: Guardinha fiel
+  moveSpeed: 5
+  HP: 5
+  behaviour: 1
+  waypoints:
+  - {fileID: 1595462244625871, guid: 0102c7399d4f14d41ac8a387cecb2af6, type: 3}
+  - {fileID: 3901140866947156077, guid: 0102c7399d4f14d41ac8a387cecb2af6, type: 3}
+  - {fileID: 7188405175084991006, guid: 0102c7399d4f14d41ac8a387cecb2af6, type: 3}
+  - {fileID: 7765347662751671386, guid: 0102c7399d4f14d41ac8a387cecb2af6, type: 3}
+  - {fileID: 8895329275354545688, guid: 0102c7399d4f14d41ac8a387cecb2af6, type: 3}
+  - {fileID: 4206623276515825663, guid: 0102c7399d4f14d41ac8a387cecb2af6, type: 3}
+  - {fileID: 5051709183494259695, guid: 0102c7399d4f14d41ac8a387cecb2af6, type: 3}
+  - {fileID: 6398543971930640218, guid: 0102c7399d4f14d41ac8a387cecb2af6, type: 3}
+  - {fileID: 8287670982405470140, guid: 0102c7399d4f14d41ac8a387cecb2af6, type: 3}
+  waypointIndex: 7
+  targetWaypoint: {x: -101.35723, y: 0.22, z: -49.53294}
+  chaseSpeed: 10
+  visionRadius: 30
+  visionAngle: 270

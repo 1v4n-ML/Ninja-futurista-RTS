@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5495831274794485199}
   - component: {fileID: 5495831274794485184}
   - component: {fileID: 5495831274794485185}
-  - component: {fileID: 5495831274794485186}
+  - component: {fileID: 6956841837522307707}
+  - component: {fileID: 614276195}
   m_Layer: 0
   m_Name: Inimigo
   m_TagString: Enemy
@@ -34,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5495831274794485198
 MeshFilter:
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d805d830c4023774cb6259aca09f431e, type: 2}
+  - {fileID: 2100000, guid: 9676781148840e44ca36405f53114218, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -131,7 +132,7 @@ NavMeshAgent:
   m_BaseOffset: 0.99999994
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5495831274794485186
+--- !u!114 &6956841837522307707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,10 +141,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 5495831274794485187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e854a0d96e7f0994aafc5eb02739236e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dda3dd305afe5544a0b8ab0fe2de3ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAgent: {fileID: 5495831274794485185}
-  player: {fileID: 0}
-  visionRadius: 20
-  chaseSpeed: 10
+  radius: 20
+  angle: 300
+  enemyDetails: {fileID: 0}
+  playerRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 64
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 8
+  canSeePlayer: 0
+--- !u!114 &614276195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5495831274794485187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0722fcf5d2c777e4ab8d429300c0a974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDetails: {fileID: 11400000, guid: 9a295a91b6dfdc34cb66aa4c5e36bc31, type: 2}
+  playerRef: {fileID: 0}
+  agent: {fileID: 0}
+  vision: {fileID: 0}
+  startingPosition: {x: 0, y: 0, z: 0}
