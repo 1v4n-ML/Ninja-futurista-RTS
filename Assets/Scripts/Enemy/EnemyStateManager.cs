@@ -13,12 +13,14 @@ public class EnemyStateManager : MonoBehaviour
     public EnemyChasingState chasingState = new EnemyChasingState();
     public EnemyGuardingState guardingState = new EnemyGuardingState();
     public EnemyPatrollingState patrollingState = new EnemyPatrollingState();
+    public EnemySearchingState searchingState = new EnemySearchingState();
 
     [Header("Referências")]
     public GameObject playerRef; // reference to the player on the scene
     public NavMeshAgent agent;
     public FieldOfView vision; // reference to the vision script
     public Vector3 startingPosition; // variable to save original guarding spot
+    public LayerMask playerLayer; // reference for the search state
 
     void Start()
     {
@@ -62,7 +64,7 @@ public class EnemyStateManager : MonoBehaviour
         currentState.UpdateState(this);
 
         if(vision.canSeePlayer){
-            Debug.Log("ó o pepinão ali!"+ this);
+            //Debug.Log("ó o pepinão ali!"+ this);
             currentState.OnPlayerDetection(this);
         }else {
             currentState.LostSightOfPlayer(this);

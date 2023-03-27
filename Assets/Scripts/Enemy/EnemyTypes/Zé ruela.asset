@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39230998a0d515d46be3d0ec35e8b9ad, type: 3}
-  m_Name: Crazy chaser
+  m_Name: "Z\xE9 ruela"
   m_EditorClassIdentifier: 
-  enemyName: creep
-  moveSpeed: 10
-  HP: 1
+  enemyName: sajdlkjlasd
+  moveSpeed: 0.9
+  HP: 36
   behaviour: 0
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
   waypointIndex: 0
   targetWaypoint: {x: 0, y: 0, z: 0}
-  chaseSpeed: 16
-  visionRadius: 20
-  searchRadius: 20
-  searchTime: 5
-  wanderRadius: 20
+  chaseSpeed: 11
+  visionRadius: 0
+  searchRadius: 0
+  searchTime: 0
+  wanderRadius: 0

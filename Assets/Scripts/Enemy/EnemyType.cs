@@ -20,10 +20,12 @@ public class EnemyType : ScriptableObject {
     [Header("Chasing variables")]
     public int chaseSpeed;
 
-    [Header("Vision variables")]
+    [Header("Search variables")]
     [Range(0,100)]
     public float visionRadius;
-    [Range(0,360)]
-    public float visionAngle;
+    public float searchRadius;
+    public float searchTime;
+    public float wanderRadius;
+    
 
 }

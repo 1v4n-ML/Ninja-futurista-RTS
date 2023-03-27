@@ -6,8 +6,6 @@ using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
     public float radius;
-    [Range(0,360)]
-    public float angle;
 
     public EnemyType enemyDetails;
     public GameObject playerRef;
@@ -21,7 +19,6 @@ public class FieldOfView : MonoBehaviour
     {
         enemyDetails = GetComponent<EnemyStateManager>().enemyDetails;
         radius = enemyDetails.visionRadius;
-        angle = enemyDetails.visionAngle;
         playerRef = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
     }
@@ -46,17 +43,19 @@ public class FieldOfView : MonoBehaviour
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
-            {
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            
+            Ray ray = new Ray(transform.position, directionToTarget);
+            RaycastHit hit;
 
-                if (!Physics.Raycast(transform.forward, directionToTarget, distanceToTarget, obstructionMask))
-                    canSeePlayer = true;
-                else
-                    canSeePlayer = false;
+            if (!Physics.Raycast(ray, out hit, distanceToTarget, obstructionMask)){
+                canSeePlayer = true;
             }
-            else
+            else{
                 canSeePlayer = false;
+            }
+            
         }
         else if (canSeePlayer)
             canSeePlayer = false;

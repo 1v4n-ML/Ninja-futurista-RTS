@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39230998a0d515d46be3d0ec35e8b9ad, type: 3}
-  m_Name: Patroller3
+  m_Name: Patrulha - rota 3
   m_EditorClassIdentifier: 
   enemyName: Guardinha fiel
   moveSpeed: 5
@@ -30,4 +30,6 @@ MonoBehaviour:
   targetWaypoint: {x: -27.019999, y: 0, z: 4.4600015}
   chaseSpeed: 10
   visionRadius: 30
-  visionAngle: 270
+  searchRadius: 0
+  searchTime: 0
+  wanderRadius: 0

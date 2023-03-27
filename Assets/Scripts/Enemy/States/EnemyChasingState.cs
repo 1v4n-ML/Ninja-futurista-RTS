@@ -4,7 +4,6 @@ public class EnemyChasingState : EnemyBaseState
 {
      public override void EnterState(EnemyStateManager enemy)
     {
-        Debug.Log("entering chasing state");
         enemy.agent.SetDestination(enemy.playerRef.transform.position);
         enemy.agent.speed = enemy.enemyDetails.chaseSpeed;
     }
@@ -19,6 +18,11 @@ public class EnemyChasingState : EnemyBaseState
     public override void LostSightOfPlayer(EnemyStateManager enemy)
     {
         enemy.agent.speed = enemy.enemyDetails.moveSpeed;
-        enemy.SwitchState(enemy.originalState);
+        if (enemy.enemyDetails.behaviour == EnemyType.behaviourTypes.Chaser || enemy.enemyDetails.behaviour == EnemyType.behaviourTypes.Patroller)
+        {
+            enemy.SwitchState(enemy.searchingState);
+        }else
+            enemy.SwitchState(enemy.originalState);
     }
+    
 }

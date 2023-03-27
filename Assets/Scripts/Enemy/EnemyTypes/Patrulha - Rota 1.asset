@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39230998a0d515d46be3d0ec35e8b9ad, type: 3}
+  m_Name: Patrulha - Rota 1
+  m_EditorClassIdentifier: 
+  enemyName: Guardinha fiel
+  moveSpeed: 5
+  HP: 5
+  behaviour: 1
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  waypointIndex: 2
+  targetWaypoint: {x: -49.08, y: 0.22, z: -52.260002}
+  chaseSpeed: 10
+  visionRadius: 30
+  searchRadius: 0
+  searchTime: 0
+  wanderRadius: 0
