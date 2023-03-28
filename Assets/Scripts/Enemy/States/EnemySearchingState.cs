@@ -27,6 +27,7 @@ public class EnemySearchingState : EnemyBaseState
     }
     public override void OnPlayerDetection(EnemyStateManager enemy)
     {
+        enemy.StopCoroutine(StopSearch(enemy));
         enemy.SwitchState(enemy.chasingState);
     }
     public override void LostSightOfPlayer(EnemyStateManager enemy)
