@@ -33,4 +33,14 @@ public class EnemyPatrollingState : EnemyBaseState
             }
         }
     }
+
+    public override void PlayerInRange(EnemyStateManager enemy)
+    {
+        enemy.SwitchState(enemy.attackingState);
+    }
+
+    public override void PlayerLeftRange(EnemyStateManager enemy)
+    {
+        
+    }
 }

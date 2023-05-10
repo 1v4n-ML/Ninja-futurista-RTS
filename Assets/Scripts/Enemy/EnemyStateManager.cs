@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EnemyStateManager : MonoBehaviour
 {
+    private bool hasSeenPlayer;
+    private bool wasAttakingPlayer;
     [Header("Tipo de inimigo (SO)")]
     public EnemyType enemyDetails; // enemy type scriptable object
     public GameObject route;
@@ -14,6 +16,7 @@ public class EnemyStateManager : MonoBehaviour
     public EnemyGuardingState guardingState = new EnemyGuardingState();
     public EnemyPatrollingState patrollingState = new EnemyPatrollingState();
     public EnemySearchingState searchingState = new EnemySearchingState();
+    public EnemyAttackingState attackingState = new EnemyAttackingState();
 
     [Header("Referências")]
     public GameObject playerRef; // reference to the player on the scene
@@ -21,17 +24,14 @@ public class EnemyStateManager : MonoBehaviour
     public FieldOfView vision; // reference to the vision script
     public Vector3 startingPosition; // variable to save original guarding spot
     public LayerMask playerLayer; // reference for the search state
+    public Animator animator; // reference for the animator component
+    public RangeCheck rangeCheck; //reference for the script that makes verifies atk range
 
     void Start()
     {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
-        agent = GetComponent<NavMeshAgent>();
-        vision = GetComponent<FieldOfView>();
+        GetReferences();
         startingPosition = transform.position;
-        if (route)
-        {   
-            enemyDetails.waypoints =  route.GetComponentsInChildren<Transform>();
-        }
+        agent.stoppingDistance = enemyDetails.atkRange - 0.2f;
 
         switch (enemyDetails.behaviour) 
         {   // setting the intial state depending on enemy type
@@ -63,17 +63,57 @@ public class EnemyStateManager : MonoBehaviour
     {
         currentState.UpdateState(this);
 
-        if(vision.canSeePlayer){
-            //Debug.Log("ó o pepinão ali!"+ this);
+        //check if player is in vision range
+        if (vision.canSeePlayer)
+        {
             currentState.OnPlayerDetection(this);
-        }else {
-            currentState.LostSightOfPlayer(this);
+            hasSeenPlayer = true; 
+        }
+        else
+        {
+            if (hasSeenPlayer)
+            {
+                currentState.LostSightOfPlayer(this);
+                hasSeenPlayer = false; 
+            }
+        }
+        //check if player is in atk range
+        if (rangeCheck.isInRange)
+        {
+            currentState.PlayerInRange(this);
+            wasAttakingPlayer = true;
+        }else
+        {
+            if (wasAttakingPlayer)
+            {
+                currentState.PlayerLeftRange(this);
+                wasAttakingPlayer = false;
+            }
         }
     }
-    public void SwitchState(EnemyBaseState state){
+    public void SwitchState(EnemyBaseState state)
+    {
         currentState = state;
         state.EnterState(this);
     }
     
+    private void GetReferences()
+    {
+        if (route)
+        {   
+            enemyDetails.waypoints =  route.GetComponentsInChildren<Transform>();
+        }
+        playerRef = GameObject.FindGameObjectWithTag("Player");
+        agent = GetComponent<NavMeshAgent>();
+        vision = GetComponent<FieldOfView>();
+        animator = GetComponent<Animator>();
+        rangeCheck = GetComponent<RangeCheck>();
+    }
+    public void FaceTarget()
+    {
+        Vector3 direction = (playerRef.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
 }
 

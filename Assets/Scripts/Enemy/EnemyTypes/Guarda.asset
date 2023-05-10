@@ -13,12 +13,17 @@ MonoBehaviour:
   m_Name: Guarda
   m_EditorClassIdentifier: 
   enemyName: 
-  moveSpeed: 8
-  HP: 5
   behaviour: 2
+  moveSpeed: 3
+  HP: 50
+  atkRange: 1
+  atkSpeed: 0.47
+  damage: 8
   waypoints: []
   waypointIndex: 0
   targetWaypoint: {x: 0, y: 0, z: 0}
-  chaseSpeed: 12
+  chaseSpeed: 6
   visionRadius: 20
-  visionAngle: 200
+  searchRadius: 0.9
+  searchTime: 0
+  wanderRadius: 0

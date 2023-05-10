@@ -13,14 +13,17 @@ MonoBehaviour:
   m_Name: Crazy chaser
   m_EditorClassIdentifier: 
   enemyName: creep
-  moveSpeed: 10
-  HP: 1
   behaviour: 0
+  moveSpeed: 8
+  HP: 30
+  atkRange: 2
+  atkSpeed: 0.84
+  damage: 3
   waypoints: []
   waypointIndex: 0
   targetWaypoint: {x: 0, y: 0, z: 0}
   chaseSpeed: 16
-  visionRadius: 20
-  searchRadius: 20
+  visionRadius: 11.6
+  searchRadius: 8
   searchTime: 10.79
   wanderRadius: 20

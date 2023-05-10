@@ -9,8 +9,6 @@ public class EnemySearchingState : EnemyBaseState
 
      public override void EnterState(EnemyStateManager enemy)
     {
-        //Debug.Log("searching");
-        //enemy.StartCoroutine(SearchForPlayer(enemy));
         enemy.StartCoroutine(StopSearch(enemy));
     }
     public override void UpdateState(EnemyStateManager enemy)
@@ -34,30 +32,19 @@ public class EnemySearchingState : EnemyBaseState
     {
         
     }
-    /* private IEnumerator SearchForPlayer(EnemyStateManager instance)
-    {
-        wanderPoint = Vector3.zero;
-        while (true)
-        {
-            //Debug.Log("dentro do while");
-            // wander towards a random point
-            if (wanderPoint == Vector3.zero || Vector3.Distance(instance.transform.position, wanderPoint) == 1f)
-            {
-                // Generate a new random point nearby
-                NavMesh.SamplePosition(instance.transform.position + Random.insideUnitSphere * instance.enemyDetails.wanderRadius, out NavMeshHit hit, instance.enemyDetails.wanderRadius, NavMesh.AllAreas);
-                wanderPoint = hit.position;
-                //Debug.Log("wandering" + wanderPoint);
-            }
-            instance.agent.SetDestination(wanderPoint);
-            
-            yield return new WaitForSeconds(1f);
-        }
-    } */
     private IEnumerator StopSearch(EnemyStateManager instance)
     {
         yield return new WaitForSecondsRealtime(instance.enemyDetails.searchTime);
-        //instance.StopCoroutine(SearchForPlayer(instance));
-        Debug.Log("not searching");
         instance.SwitchState(instance.originalState);
+    }
+
+    public override void PlayerInRange(EnemyStateManager enemy)
+    {
+        enemy.SwitchState(enemy.attackingState);
+    }
+
+    public override void PlayerLeftRange(EnemyStateManager enemy)
+    {
+
     }
 }

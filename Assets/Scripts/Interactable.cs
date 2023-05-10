@@ -1,58 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 
 public class Interactable : MonoBehaviour
 {
     public float radius = 3f;
     public Transform interactionTransform;
 
-    //bool isFocus = false;
+    bool isFocus = false;
     Transform player;
 
     bool hasInteracted = false;
 
-    private void Start() {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-    public virtual void Interact ()
+    public virtual void Interact()
     {
-        //This method is meant to be overwritten
-        Debug.Log("Interacting with" + transform.name);
-
+        // This method will be overwritten by subclasses
+        //Debug.Log("Interacting with " + interactionTransform.name);
     }
 
-    public void Update(){
-
-        float distance = Vector3.Distance(player.position, interactionTransform.position);
-        if (distance <= radius)
+    void Update()
+    {
+        if (isFocus && !hasInteracted)
         {
-            Interact();
-            Debug.Log("INTERACT");
-            hasInteracted = true;
+            float distance = Vector3.Distance(player.position, interactionTransform.position);
+            if (distance <= radius)
+            {
+                Interact();
+                Debug.Log("Interacting with " + interactionTransform.name);
+                hasInteracted = true;
+            }
         }
-
     }
 
-    /* public void onFocused ( Transform playerTransform)
+    public void OnFocused(Transform playerTransform)
     {
-
         isFocus = true;
         player = playerTransform;
         hasInteracted = false;
     }
 
-    public void OnDeFocused ()
+    public void OnDefocused()
     {
         isFocus = false;
         player = null;
         hasInteracted = false;
-    } */
-
-    private void OnDrawGizmosSelected() 
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(interactionTransform.position, radius);
-        
     }
 
+    void OnDrawGizmosSelected()
+    {
+        if (interactionTransform == null)
+            interactionTransform = transform;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(interactionTransform.position, radius);
+    }
 }

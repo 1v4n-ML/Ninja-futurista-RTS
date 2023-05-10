@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBeahvior : MonoBehaviour
+public class EnemyBeahvior : MonoBehaviour // DEPRECATED
 {
     [Header("Rerefências")]
     [SerializeField]

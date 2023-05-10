@@ -26,10 +26,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  waypointIndex: 2
-  targetWaypoint: {x: -49.08, y: 0.22, z: -52.260002}
+  waypointIndex: 5
+  targetWaypoint: {x: -56.600002, y: 0.22, z: -72.36}
   chaseSpeed: 10
   visionRadius: 30
-  searchRadius: 0
+  searchRadius: 12.07
   searchTime: 0
   wanderRadius: 0
