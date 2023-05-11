@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class PlayerMotor : MonoBehaviour {
 
-    Transform target;
+    private Transform target;
     NavMeshAgent agent;
 
     void Start () 

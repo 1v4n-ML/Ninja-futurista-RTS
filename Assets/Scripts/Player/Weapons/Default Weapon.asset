@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Default Weapon
   m_EditorClassIdentifier: 
   label: espadinha
-  range: 3
-  dmg: 20
-  atkSpeed: 1.82
+  range: 10
+  dmg: 10
+  atkSpeed: 3
   icon: {fileID: 0}
-  ranged: 0
